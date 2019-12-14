@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pokemones</title>
+	<style type="text/css">
+		body{background: #2b2ead; font-family: sans-serif;}
+		h1{color:#FFF; font-size: 40px; text-align: center;}
+		.pokemon{
+			background: #fff;
+			height: 210px;
+		    width: 218px;
+		    padding: 10px;
+		    border: solid 2px #111;
+		    border-radius: 2px;
+		    display: inline-block;
+		    margin: 14px 10px;
+		    text-align: center;
+		}
+		.pokemon a{
+			color: #fff;
+    		font-size: 14px;
+    		font-weight: bold;
+    		background: #2b2ead;
+    		padding: 10px;
+    		text-decoration: none;
+    		border-radius: 4px;
+    	}
+    	.pokemon a:hover{
+    		color: #2b2ead;
+    		background: #fff;
+    		border: solid 2px #2b2ead;
+    	}
+    	.pokemon h2{margin: 0; margin-bottom: 20px; text-transform: capitalize;}
+	</style>
+</head>
+<body>
+	<h1>Lista de Pokemones</h1>
+	{% for pokemon in pokemones %}
+
+		<div class="pokemon">
+			<img src="{{ pokemon.imagen }}">
+			<h2>{{ pokemon.nombre }}</h2>
+			<a href=" {% url 'ver_pokemon'  pokemon.id_pokemon %}">Ver Pokemon</a>
+		</div>
+
+	{% endfor %}
+</body>
+</html>

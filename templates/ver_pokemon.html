@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{ pokemon.nombre }}</title>
+	<style type="text/css">
+		body{background: #2b2ead; font-family: sans-serif;}
+		h1{color:#FFF; font-size: 40px; text-align: center;}
+		.caracteristicas{
+			background: #fff;
+			border-radius: 4px;
+		    padding: 10px;
+		    width: 80%;
+		    border: 2px solid;
+		    margin: 0 auto;
+		}
+		.caracteristicas h2{text-transform: capitalize;}
+		
+	</style>
+</head>
+<body>
+	<div class="caracteristicas">
+		<img src="{{ pokemon.imagen }}">
+		<h2>{{ pokemon.nombre }}</h2>
+		<h3>Detalle de las caracteristicas.</h3>
+		<p><strong>Peso:</strong> {{ pokemon.peso }} LB</p>
+		<p><strong>Altura:</strong> {{ pokemon.altura }} PIE</p>
+		<p>
+			<strong>Tipo:</strong>
+			{% for tipo in pokemon.tipos %}
+				<a href=" {% url 'inicio' %}?&url={{tipo.type.url}}">
+					{{ tipo.type.name }}
+				</a>,
+			{% endfor %}
+		</p>
+		<p>
+			<strong>Habilidades:</strong>
+			{% for habilidad in pokemon.habilidades %}
+				<span>{{ habilidad.ability.name }} </span>,
+			{% endfor %}
+		</p>
+		<p>
+			<strong>Movimientos:</strong>
+			{% for movimiento in pokemon.movimientos %}
+				<span>{{ movimiento.move.name }} </span>,
+			{% endfor %}
+		</p>
+	</div>
+</body>
+</html>
